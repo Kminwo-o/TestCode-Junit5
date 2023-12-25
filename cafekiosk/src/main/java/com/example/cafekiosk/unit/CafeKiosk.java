@@ -36,6 +36,4 @@ public class CafeKiosk {
     public Order createOrder() {
         return new Order(LocalDateTime.now(), beverageList);
     }
-
-
 }
