@@ -1,4 +1,4 @@
-package com.example.cafekiosk.spring.api.service.response;
+package com.example.cafekiosk.spring.api.service.product.response;
 
 import com.example.cafekiosk.spring.domain.product.Product;
 import com.example.cafekiosk.spring.domain.product.ProductInfo;

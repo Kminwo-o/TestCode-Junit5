@@ -1,0 +1,60 @@
+package com.example.cafekiosk.spring.domain.order;
+
+import com.example.cafekiosk.spring.domain.BaseEntity;
+import com.example.cafekiosk.spring.domain.orderproduct.OrderProduct;
+import com.example.cafekiosk.spring.domain.product.Product;
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+// sql 예약어 때문에 order를 사용할 수 없음, 따라서 실제 테이블 적용 시에는 orders로 적용
+@Table(name = "orders")
+@Getter
+public class Order extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
+    @Column(nullable = false)
+    private int totalPrice;
+
+    @Column(nullable = false)
+    private LocalDateTime registeredDateTime;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderProduct> orderProducts = new ArrayList<>();
+
+    private Order(List<Product> products, LocalDateTime registeredDateTime) {
+        this.orderStatus = OrderStatus.INIT;
+        this.totalPrice = calculateTotalPrice(products);
+        this.registeredDateTime = registeredDateTime;
+        this.orderProducts = createOrderList(products);
+    }
+
+    private int calculateTotalPrice(List<Product> products) {
+        return products.stream()
+                .mapToInt(product -> product.getProductInfo().getPrice())
+                .sum();
+    }
+
+    private List<OrderProduct> createOrderList(List<Product> products) {
+        return products.stream()
+                .map(product -> new OrderProduct(this, product))
+                .collect(Collectors.toList());
+    }
+
+    public static Order create(List<Product> products, LocalDateTime registeredDateTime) {
+        return new Order(products, registeredDateTime);
+    }
+}

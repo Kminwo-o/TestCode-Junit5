@@ -9,13 +9,13 @@ import lombok.*;
 @EqualsAndHashCode
 @Getter
 public class ProductInfo {
-    @Column
+    @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private int price;
 
-    @Column
+    @Column(nullable = false)
     private String productNumber;
 
     @Builder

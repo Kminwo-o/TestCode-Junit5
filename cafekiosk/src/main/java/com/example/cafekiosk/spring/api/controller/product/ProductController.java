@@ -1,7 +1,7 @@
-package com.example.cafekiosk.spring.api.service.controller.product;
+package com.example.cafekiosk.spring.api.controller.product;
 
-import com.example.cafekiosk.spring.api.service.ProductService;
-import com.example.cafekiosk.spring.api.service.response.ProductResponse;
+import com.example.cafekiosk.spring.api.service.product.ProductService;
+import com.example.cafekiosk.spring.api.service.product.response.ProductResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

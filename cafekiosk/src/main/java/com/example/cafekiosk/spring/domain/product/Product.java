@@ -1,6 +1,5 @@
 package com.example.cafekiosk.spring.domain.product;
 
-import com.example.cafekiosk.spring.api.service.response.ProductResponse;
 import com.example.cafekiosk.spring.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -24,4 +23,11 @@ public class Product extends BaseEntity {
 
     @Embedded
     private ProductInfo productInfo;
+
+    @Builder
+    public Product(ProductType productType, ProductSellingType productSellingType, ProductInfo productInfo) {
+        this.productType = productType;
+        this.productSellingType = productSellingType;
+        this.productInfo = productInfo;
+    }
 }
