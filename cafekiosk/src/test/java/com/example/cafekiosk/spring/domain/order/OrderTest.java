@@ -29,18 +29,6 @@ class OrderTest {
         assertThat(order.getTotalPrice()).isEqualTo(3000);
     }
 
-    private Product createProduct (String productNumber, int price, String name) {
-        return Product.builder()
-                .productType(ProductType.HAND_MADE)
-                .productSellingType(ProductSellingType.SELLING)
-                .productInfo(ProductInfo.builder()
-                        .name(name)
-                        .productNumber(productNumber)
-                        .price(price)
-                        .build())
-                .build();
-    }
-
     @DisplayName("주문 생성 시, 주문 상태는 INIT이다.")
     @Test
     void init() {
@@ -72,5 +60,17 @@ class OrderTest {
 
         // then
         assertThat(order.getRegisteredDateTime()).isEqualTo(registeredDateTime);
+    }
+
+    private Product createProduct (String productNumber, int price, String name) {
+        return Product.builder()
+                .productType(ProductType.HAND_MADE)
+                .productSellingType(ProductSellingType.SELLING)
+                .productInfo(ProductInfo.builder()
+                        .name(name)
+                        .productNumber(productNumber)
+                        .price(price)
+                        .build())
+                .build();
     }
 }
