@@ -5,6 +5,8 @@
 - 주로 Spring Mvc 패턴에서 자주 쓰는 방법
 - 사용자 -> Presentation Layer -> Business Layer -> Persistence Layer -> DB
     - Presentation Layer
+      - 외부 세계의 요청을 가장 먼저 받는 계층
+      - 파라미터에 대한 @Validation을 검증이 주안점
       - 사용자가 데이터를 전달하기 위해 화면에 정보를 표시하는 것이 주 관심사
       - View, Controller
     - Business Layer

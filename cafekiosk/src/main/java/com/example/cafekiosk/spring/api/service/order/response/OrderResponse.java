@@ -36,7 +36,7 @@ public class OrderResponse {
                 .registeredDateTime(order.getRegisteredDateTime())
                 .products(order.getOrderProducts().stream()
                         .map(orderProduct -> ProductResponse.of(orderProduct.getProduct()))
-                        .collect(Collectors.toList())
+                        .toList()
                 )
                 .build();
     }

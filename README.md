@@ -3,8 +3,9 @@
 ### Layered Architecture
 - Layered Architecture를 기준으로 Persistence Layer, Business Layer, Presentation Layer으로 나누어 TestCode를 작성
 
-### Junit5, AssertJ
+### Junit5, AssertJ, MockMVC
 - AssertJ.assertThat, assertThrowBy 등 활용하여 테스트 코드 작성
+- Mockkito 활용하여 테스트 코드 작성
 
 ### SonaLint
 - SonaLint를 활용해 코드 품질을 유지
